@@ -80,3 +80,10 @@ mutation {
 ```
 
 You should see that a new user has been created. The returned token can be used to authenticate requests to your Graphcool API as that user. Note that running the mutation again with the same Google token will not add a new user.
+
+## Troubleshooting
+
+If you are getting an `invalid token` error and using the Chrome Extension Identity API function `getAuthToken` you need to change the get parameter `id_token` to `access_token` in the URL in https://github.com/graphcool-examples/functions/blob/master/authentication/google-authentication/google-authentication.js#L10 to 
+```
+`https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=${googleToken}`)
+```
